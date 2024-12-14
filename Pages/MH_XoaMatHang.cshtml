@@ -1,0 +1,63 @@
+﻿@page
+@using DoAnMonHoc_23880108.Entity;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.LuuTru;
+
+
+@model DoAnMonHoc_23880108.Pages.MH_XoaMatHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		string tb = "";
+		string maMH = Request.Query["maMH"]!;
+
+		if (string.IsNullOrEmpty(Request.Query["maMH"]))
+		{
+			tb = "Mã mặt hàng không hợp lệ! ";
+		}
+
+		if (tb == string.Empty)
+		{
+			if (Request.Method == "GET")
+			{
+				MatHang? sp = XuLyMatHang.DocMatHang(maMH);
+				if (sp.HasValue)
+				{
+					tb = $"Bạn có chắc muốn xóa mặt hàng {sp.Value.Ma}? ";
+				}
+				else
+				{
+					tb = "Không tìm thấy mặt hàng! ";
+				}
+			}
+			else if (Request.Method == "POST")
+			{
+				XuLyMatHang.XoaMatHang(maMH);
+				Response.Redirect("/Index");
+			}
+		}
+		@if (XuLyMatHang.DocMatHang(maMH).HasValue)
+		{
+			<p>Xóa mặt hàng mã @maMH</p>
+
+			<p>@tb</p>
+			<div>
+				<form method="POST">
+					<input type="submit" value="Xóa" />
+				</form>
+			</div>
+		}
+		else
+		{
+			<p>@tb</p>
+		}
+	}	
+}
+
+

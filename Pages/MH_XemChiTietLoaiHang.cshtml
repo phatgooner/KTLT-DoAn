@@ -1,0 +1,51 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_XemChiTietLoaiHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		string tenLoai = Request.Query["tenLH"]!;
+
+		MatHang[] ds = XuLyMatHang.DocDanhSachTheoLoai(tenLoai);
+
+		<p>Danh Sách mặt hàng thuộc loại hàng @tenLoai</p>
+
+
+		@if (ds != null)
+		{
+			<div>
+				<table>
+					<tr>
+						<th>Mã Hàng</th>
+						<th>Tên Hàng</th>
+						<th>Loại Hàng</th>
+						<th>Công ty Sản Xuất</th>
+						<th>Ngày Sản Xuất</th>
+						<th>Hạn Sử Dụng</th>
+						<th>Giá (VNĐ)</th>
+					</tr>
+					@foreach (var sp in ds)
+					{
+						<tr>
+							<td>@sp.Ma</td>
+							<td>@sp.Ten</td>
+							<td>@sp.Loai</td>
+							<td>@sp.CongTySX</td>
+							<td>@sp.NSX</td>
+							<td>@sp.HSD</td>
+							<td>@sp.Gia.ToString("#,##0")</td>
+						</tr>
+					}
+				</table>
+			</div>
+		}		
+	}
+}

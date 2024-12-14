@@ -1,0 +1,56 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_DangNhapModel
+@{
+	string s = "";
+	string id = string.Empty;
+	string pass = string.Empty;
+
+
+	if (Request.Method == "POST")
+	{
+		id = Request.Form["id"]!;
+		if (string.IsNullOrEmpty(id))
+		{
+			s = "Username không hợp lệ! ";
+		}
+
+		pass = Request.Form["pass"]!;
+		if (string.IsNullOrEmpty(pass))
+		{
+			s += "Mật khẩu không hợp lệ! ";
+		}
+
+		if (s == string.Empty)
+		{
+			NguoiDung? user = XuLyNguoiDung.KiemTraDangNhap(id, pass);
+			if (user.HasValue)
+			{
+				HttpContext.Session.SetString("username", user.Value.Username);
+				s = "Đăng nhập thành công! ";
+				Response.Redirect("/Index");
+			}
+			else
+			{
+				s = "Mật khẩu hoặc username không đúng ";
+			}
+		}
+	}
+}
+
+<p style=" text-align:center; font-size:larger; font-weight: bold">ĐĂNG NHẬP TÀI KHOẢN NGƯỜI DÙNG</p>
+
+<div style=" text-align:center">
+	<form method="POST">
+		<label for="fname">Nhập username:</label><br>
+		<input type="text" id="fname" name="id" value=""><br><br>
+		<label for="fname">Nhập mật khẩu:</label><br>
+		<input type="password" id="fname" name="pass" value=""><br><br>
+
+		<input type="submit" value="Đăng nhập" />
+	</form>
+</div>
+<p>@s</p>

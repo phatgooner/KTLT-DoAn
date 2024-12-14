@@ -1,0 +1,22 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model IndexModel
+
+@{
+	ViewData["Title"] = "Home page";
+
+	string username = HttpContext.Session.GetString("username")!;
+
+	if (!string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_QuanLyMatHang");
+	}
+
+	else
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+}

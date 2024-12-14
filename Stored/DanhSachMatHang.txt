@@ -1,0 +1,11 @@
+10
+MH01,Laptop MSI,Đồ điện tử,Công ty Micro-Star International,24/02/2022,22/07/2026,35000000
+MH02,Tai nghe AirPods,Đồ điện tử,Công ty Apple,31/01/2023,04/09/2024,5000000
+MH03,iPhone 15 Pro Max,Đồ điện tử,Công ty Apple,02/01/2024,11/07/2027,35000000
+MH04,Xiaomi 11T Pro,Đồ điện tử,Công ty XiaoMi,27/09/2023,20/11/2025,11500000
+MH05,Bánh Dẻo,Thực phẩm,Công ty Sản xuất Bánh kẹo Kinh Đô,01/03/2024,01/04/2024,500000
+MH06,Bánh Trung Thu,Thực phẩm,Công ty Sản xuất Bánh kẹo Kinh Đô,01/04/2024,01/05/2024,600000
+MH07,Thuốc nhỏ mắt,Dược phẩm,Công ty V Rohto,31/08/2023,09/10/2024,6000
+MH08,Bông gòn,Dược phẩm,Công ty Bông Bạch Tuyết,24/01/2024,16/07/2024,40000
+MH09,Thuốc giảm đau Panadol,Dược phẩm,Công ty Panadol,11/01/2024,01/05/2024,25000
+MH10,Dầu gió,Dược phẩm,Công ty Dầu Thiên Thảo,09/01/2024,29/02/2024,15000

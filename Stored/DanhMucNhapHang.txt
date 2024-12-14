@@ -1,0 +1,11 @@
+10
+HD01,Laptop MSI,Cái,10,25000000
+HD01,Tai nghe AirPods,Cái,20,3000000
+HD02,iPhone 15 Pro Max,Cái,5,31000000
+HD02,Xiaomi 11T Pro,Cái,3,13500000
+HD03,Bánh Dẻo,Hộp,10,200000
+HD03,Bánh Trung Thu,Hộp,7,255000
+HD04,Thuốc giảm đau Panadol,Hộp,30,20000
+HD04,Dầu gió,Chai,50,30000
+HD04,Bông gòn,Bịch,25,40000
+HD04,Thuốc nhỏ mắt,Lọ,50,5000

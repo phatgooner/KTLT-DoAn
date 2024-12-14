@@ -1,0 +1,153 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DoAnMonHoc_23880108
+build_property.RootNamespace = DoAnMonHoc_23880108
+build_property.ProjectDir = C:\Users\ADMIN\source\repos\DoAnMonHoc_23880108\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ADMIN\source\repos\DoAnMonHoc_23880108
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_DangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfRGFuZ0t5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_DangNhap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfRGFuZ05oYXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_QuanLyHoaDonBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfUXVhbkx5SG9hRG9uQmFuSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_QuanLyHoaDonNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfUXVhbkx5SG9hRG9uTmhhcEhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_QuanLyLoaiHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfUXVhbkx5TG9haUhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_QuanLyMatHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfUXVhbkx5TWF0SGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_QuanLyThongKeHetHan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfUXVhbkx5VGhvbmdLZUhldEhhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_QuanLyThongKeTonKho.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfUXVhbkx5VGhvbmdLZVRvbktoby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_SuaHoaDonBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfU3VhSG9hRG9uQmFuSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_SuaHoaDonNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfU3VhSG9hRG9uTmhhcEhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_SuaLoaiHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfU3VhTG9haUhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_SuaMatHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfU3VhTWF0SGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_ThemDanhMucBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVGhlbURhbmhNdWNCYW5IYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_ThemDanhMucNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVGhlbURhbmhNdWNOaGFwSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_ThemHoaDonBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVGhlbUhvYURvbkJhbkhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_ThemHoaDonNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVGhlbUhvYURvbk5oYXBIYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_ThemLoaiHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVGhlbUxvYWlIYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_ThemMatHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVGhlbU1hdEhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_TrangChu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfVHJhbmdDaHUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XemChiTietHoaDonBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWGVtQ2hpVGlldEhvYURvbkJhbkhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XemChiTietHoaDonNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWGVtQ2hpVGlldEhvYURvbk5oYXBIYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XemChiTietLoaiHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWGVtQ2hpVGlldExvYWlIYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XoaDanhMucBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWG9hRGFuaE11Y0JhbkhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XoaDanhMucNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWG9hRGFuaE11Y05oYXBIYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XoaHoaDonBanHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWG9hSG9hRG9uQmFuSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XoaHoaDonNhapHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWG9hSG9hRG9uTmhhcEhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XoaLoaiHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWG9hTG9haUhhbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/MH_XoaMatHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTUhfWG9hTWF0SGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/source/repos/DoAnMonHoc_23880108/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2ku8jz65oh

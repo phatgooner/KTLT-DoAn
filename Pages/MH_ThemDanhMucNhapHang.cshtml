@@ -1,0 +1,140 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_ThemDanhMucNhapHangModel
+
+@{
+	string username = HttpContext.Session.GetString("username")!;
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		string maHoaDon = Request.Query["maHD"]!;
+
+		HoaDon? hd = XuLyHoaDonNhapHang.DocHoaDon(maHoaDon);
+		if (hd.HasValue)
+		{
+			<div><a style="font-weight:bold">Mã hóa đơn:</a> @hd.Value.Ma</div>
+			<div><a style="font-weight:bold">Họ tên người/đơn vị bán hàng:</a> @hd.Value.TenNguoi</div>
+			<div><a style="font-weight:bold">Ngày tạo hóa đơn:</a> @hd.Value.NgayTao</div>
+			<br>
+
+			DanhMuc[] mh = XuLyDanhMucNhapHang.DocDanhSachTheoHoaDon(@hd.Value.Ma);
+			int sum = XuLyHoaDonNhapHang.TongGiaTriHoaDon(@hd.Value.Ma);
+
+			string tb = "";
+			string tenHang = string.Empty;
+			string donVi = string.Empty;
+			int soLuong = 0;
+			int donGia = 0;
+
+			if (Request.Method == "POST")
+			{
+				if (Request.Form["action"] == "save")
+				{
+					Response.Redirect($"/MH_XemChiTietHoaDonNhapHang?maHD={hd.Value.Ma}");
+				}
+
+				tenHang = Request.Form["tenHang"]!;
+				if (string.IsNullOrEmpty(tenHang))
+				{
+					tb += "Tên hàng hóa không hợp lệ! ";
+				}
+
+				donVi = Request.Form["donVi"]!;
+				if (string.IsNullOrEmpty(donVi))
+				{
+					tb += "Đơn vị hàng hóa không hợp lệ! ";
+				}
+
+				if (!int.TryParse(Request.Form["soLuong"], out soLuong))
+				{
+					tb += "Số lượng hàng hóa không hợp lệ! ";
+				}
+
+				if (!int.TryParse(Request.Form["donGia"], out donGia))
+				{
+					tb += "Giá trị hàng hóa không hợp lệ! ";
+				}
+
+				if (tb == string.Empty)
+				{
+					DanhMuc? dm = XuLyDanhMucNhapHang.KhoiTaoDanhMuc(hd.Value.Ma, tenHang, donVi, soLuong, donGia);
+					if (dm.HasValue && XuLyDanhMucNhapHang.ThemDanhMuc(dm.Value) == true)
+					{
+						if (Request.Form["action"] == "add")
+						{
+							Response.Redirect($"/MH_ThemDanhMucNhapHang?maHD={hd.Value.Ma}");
+						}
+					}
+					else
+					{
+						tb = "Thông tin hàng hóa không hợp lệ hoặc bị trùng lặp! ";
+					}
+				}
+
+			}
+
+			<div>
+				<form method="POST">
+					<table>
+						<tr>
+							<th>STT</th>
+							<th>Tên Hàng Hóa, Dịch Vụ</th>
+							<th>Đơn Vị</th>
+							<th>Số Lượng</th>
+							<th>Đơn Giá (VNĐ)</th>
+							<th>Thành Tiền (VNĐ)</th>
+							<th></th>
+						</tr>
+
+
+						@for (int i = 0; i < mh.Length; i++)
+						{
+							<tr>
+								<td>@(i + 1)</td>
+								<td>@mh[i].TenHang</td>
+								<td>@mh[i].DonVi</td>
+								<td>@mh[i].SoLuong</td>
+								<td>@mh[i].DonGia.ToString("#,##0")</td>
+								<td>@((mh[i].SoLuong * mh[i].DonGia).ToString("#,##0"))</td>
+								<td>
+									<a href="/MH_XoaDanhMucNhapHang?maHD=@mh[i].MaHoaDon&tenHang=@mh[i].TenHang">Xóa</a>
+								</td>
+							</tr>
+						}
+						<tr>
+							<th></th>
+							<th><input type="text" id="fname" name="tenHang" value="@tenHang"></th>
+							<th><input type="text" id="fname" name="donVi" value="@donVi"></th>
+							<th><input type="text" id="fname" name="soLuong" value="@soLuong"></th>
+							<th><input type="text" id="fname" name="donGia" value="@donGia"></th>
+							<th>0</th>
+							<th>
+								<button type="submit" name="action" value="add">Thêm</button>
+							</th>
+						</tr>
+					</table><br>
+
+					<p style=" text-align:right">TỔNG CỘNG: @sum.ToString("#,##0") (VNĐ)</p><br>
+					@if (sum > 0)
+					{
+						<div style="text-align:center">
+							<button type="submit" name="action" value="save">Hoàn tất</button>
+						</div>
+					}
+				</form>
+			</div>
+			<br>
+			<p>@tb</p>
+		}
+		else
+		{
+			<p>Không tìm thấy thông tin hóa đơn!</p>
+		}
+	}
+}

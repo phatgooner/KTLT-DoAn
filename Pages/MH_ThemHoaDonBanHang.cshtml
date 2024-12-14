@@ -1,0 +1,74 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+
+@model DoAnMonHoc_23880108.Pages.MH_ThemHoaDonBanHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+
+	else
+	{
+		string tb = "";
+		string maHD = string.Empty;
+		string tenNguoiMua = string.Empty;
+		string ngayTao = string.Empty;
+
+		if (Request.Method == "POST")
+		{
+			maHD = Request.Form["maHD"]!;
+			if (string.IsNullOrEmpty(maHD))
+			{
+				tb = "Mã hóa đơn không hợp lệ! ";
+			}
+
+			tenNguoiMua = Request.Form["tenNguoiMua"]!;
+			if (string.IsNullOrEmpty(tenNguoiMua))
+			{
+				tb += "Tên người mua hàng không hợp lệ! ";
+			}
+
+			ngayTao = Request.Form["ngayTao"]!;
+			if (string.IsNullOrEmpty(ngayTao))
+			{
+				tb += "Ngày tạo hóa đơn không hợp lệ! ";
+			}
+
+			if (tb == string.Empty)
+			{
+				HoaDon? hd = XuLyHoaDonBanHang.KhoiTaoHoaDon(maHD.ToUpper(), tenNguoiMua, ngayTao);
+				if (hd.HasValue && XuLyHoaDonBanHang.ThemHoaDon(hd.Value) == true)
+				{
+					Response.Redirect($"/MH_ThemDanhMucBanHang?maHD={hd.Value.Ma}");
+				}
+				else
+				{
+					tb = "Thông tin hóa đơn không hợp lệ hoặc hóa đơn đã tồn tại! ";
+				}
+			}
+		}
+		<p>Tạo hóa đơn mới</p>
+
+		<div>
+			<form method="POST">
+				<label for="fname">Nhập Mã hóa đơn:</label><br>
+				<input type="text" id="fname" name="maHD" value="@maHD"><br>
+
+				<label for="fname">Nhập Tên người mua hàng:</label><br>
+				<input type="text" id="fname" name="tenNguoiMua" value="@tenNguoiMua"><br>
+
+				<label for="fname">Nhập ngày tạo hóa đơn:</label><br>
+				<input type="date" id="fname" name="ngayTao" value="@ngayTao"><br><br>
+
+				<input type="submit" value="Thêm danh mục hàng hóa" />
+			</form>
+		</div>
+		<p>@tb</p>
+	}
+}

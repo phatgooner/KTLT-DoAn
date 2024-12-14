@@ -1,0 +1,80 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_QuanLyLoaiHangModel
+
+
+@{
+	string username = HttpContext.Session.GetString("username")!;
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		LoaiHang[] ds;
+		string tuKhoa = string.Empty;
+
+		if (Request.Method == "POST")
+		{
+			tuKhoa = Request.Form["tukhoa"]!;
+			ds = XuLyLoaiHang.DocDanhSach(tuKhoa);
+		}
+
+		else
+		{
+			ds = XuLyLoaiHang.DocDanhSach();
+		}
+
+
+		<p style=" text-align:center; font-size:larger; font-weight: bold">DANH SÁCH LOẠI HÀNG</p>
+
+		<div>
+			<form method="POST">
+				<label for="fname">Tìm loại hàng:</label><br>
+				<input type="text" id="fname" name="tukhoa" value="@tuKhoa">
+
+
+				<input type="submit" value="Tìm kiếm" />
+			</form>
+		</div>
+		<br>
+
+
+		@if (ds != null)
+		{
+			<div>
+				<table>
+					<tr>
+						<th>STT</th>
+						<th>Loại Hàng</th>					
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+					@for (int i = 0; i < ds.Length; i++)
+					{
+						<tr>
+							<td>@(i+1)</td>
+							<td>@ds[i].Ten</td>							
+							<td>
+								<a href="/MH_XemChiTietLoaiHang?tenLH=@ds[i].Ten">Xem chi tiết</a>
+							</td>
+							<td>
+								<a href="/MH_SuaLoaiHang?tenLH=@ds[i].Ten">Sửa thông tin</a>
+							</td>
+							<td>
+								<a href="/MH_XoaLoaiHang?tenLH=@ds[i].Ten">Xóa</a>
+							</td>
+						</tr>
+					}
+				</table>
+			</div>
+		}
+		<div>
+			<a href="/MH_ThemLoaiHang">Thêm Loại Hàng</a>
+		</div>
+	}
+}

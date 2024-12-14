@@ -1,0 +1,105 @@
+﻿@{
+	string username = Context.Session.GetString("username")!;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - QUẢN LÝ CỬA HÀNG</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/KTLT.styles.css" asp-append-version="true" />
+	<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container">
+				<a class="navbar-brand" asp-area="" asp-page="/Index">QUẢN LÝ CỬA HÀNG</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+					@if (string.IsNullOrEmpty(username))
+					{
+						<ul class="navbar-nav flex-grow-1">
+						</ul>
+					}
+					else
+					{
+						<ul class="navbar-nav flex-grow-1">
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/MH_QuanLyLoaiHang">LOẠI HÀNG</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/MH_QuanLyHoaDonBanHang">HÓA ĐƠN BÁN HÀNG</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/MH_QuanLyHoaDonNhapHang">HÓA ĐƠN NHẬP HÀNG</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/MH_QuanLyThongKeHetHan">THỐNG KÊ HẾT HẠN</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/MH_QuanLyThongKeTonKho">THỐNG KÊ TỒN KHO</a>
+							</li>
+						</ul>
+					}					
+				</div>
+				<div>
+					@if (string.IsNullOrEmpty(username))
+					{
+						<a href="MH_DangKy">Đăng Ký</a>
+						<a>/</a>
+						<a href="MH_DangNhap">Đăng Nhập</a>
+					}
+					else
+					{
+						<div>
+							Xin chào @username,						
+							<a href="MH_TrangChu">Đăng Xuất</a>
+						</div>
+					}
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; NGUYỄN TIẾN PHÁT - 23880108 - ĐỒ ÁN MÔN HỌC
+		</div>
+	</footer>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+

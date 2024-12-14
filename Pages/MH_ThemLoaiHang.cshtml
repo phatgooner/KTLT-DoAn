@@ -1,0 +1,58 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+
+@model DoAnMonHoc_23880108.Pages.MH_ThemLoaiHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+
+	else
+	{
+		string tb = "";
+
+		string ten = string.Empty;
+
+
+		if (Request.Method == "POST")
+		{
+			ten = Request.Form["ten"]!;
+			if (string.IsNullOrEmpty(ten))
+			{
+				tb += "Tên loại hàng không hợp lệ! ";
+			}
+
+			if (tb == string.Empty)
+			{
+				LoaiHang? sp = XuLyLoaiHang.KhoiTaoLoaiHang(ten);
+				if (sp.HasValue && XuLyLoaiHang.ThemLoaiHang(sp.Value) == true)
+				{
+					tb = "Thêm loại hàng thành công! ";
+					Response.Redirect("/MH_QuanLyLoaiHang");
+				}
+				else
+				{
+					tb = "Tên loại hàng không hợp lệ hoặc loại hàng đã tồn tại! ";
+				}
+			}
+		}
+		<p>Thêm loại hàng</p>
+
+		<div>
+			<form method="POST">
+
+				<label for="fname">Nhập Tên Loại hàng:</label><br>
+				<input type="text" id="fname" name="ten" value="@ten"><br><br>
+
+				<input type="submit" value="Thêm" />
+			</form>
+		</div>
+		<p>@tb</p>
+	}
+}

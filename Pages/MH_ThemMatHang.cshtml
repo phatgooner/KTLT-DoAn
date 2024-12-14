@@ -1,0 +1,121 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_ThemMatHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+
+	else
+	{
+		string tb = "";
+		string maMH = string.Empty;
+		string ten = string.Empty;
+		string loai = string.Empty;
+		string congTy = string.Empty;
+		string nsx = string.Empty;
+		string hsd = string.Empty;
+		int gia = 0;
+
+		if (Request.Method == "POST")
+		{
+			maMH = Request.Form["maMH"]!;
+			if (string.IsNullOrEmpty(maMH))
+			{
+				tb = "Mã mặt hàng không hợp lệ! ";
+			}
+
+			ten = Request.Form["ten"]!;
+			if (string.IsNullOrEmpty(ten))
+			{
+				tb += "Tên mặt hàng không hợp lệ! ";
+			}
+
+			loai = Request.Form["loai"]!;
+			if (string.IsNullOrEmpty(loai))
+			{
+				tb += "Tên loại hàng không hợp lệ! ";
+			}
+
+			congTy = Request.Form["congty"]!;
+			if (string.IsNullOrEmpty(loai))
+			{
+				tb += "Tên công ty sản xuất không hợp lệ! ";
+			}
+
+			nsx = Request.Form["nsx"]!;
+			if (string.IsNullOrEmpty(nsx))
+			{
+				tb += "Ngày sản xuất không hợp lệ! ";
+			}
+
+			hsd = Request.Form["hsd"]!;
+			if (string.IsNullOrEmpty(hsd))
+			{
+				tb += "Hạn sử dụng không hợp lệ! ";
+			}
+
+			if (!int.TryParse(Request.Form["gia"], out gia))
+			{
+				tb += "Giá mặt hàng không hợp lệ! ";
+			}
+
+			if (tb == string.Empty)
+			{
+				MatHang? sp = XuLyMatHang.KhoiTaoMatHang(maMH.ToUpper(), ten, loai, congTy, nsx, hsd, gia);
+				if (sp.HasValue && XuLyMatHang.ThemMatHang(sp.Value) == true)
+				{
+					tb = "Thêm mặt hàng thành công! ";
+					Response.Redirect("/Index");
+				}
+				else
+				{
+					tb = "Thông tin mặt hàng không hợp lệ hoặc mặt hàng đã tồn tại! ";
+				}
+			}
+		}
+		<p>Thêm mặt hàng</p>
+
+		<div>
+			@{
+				string[] a = XuLyDanhMucNhapHang.DocDanhSachTenHangNhap(); //Lấy sản phẩm từ danh sách mặt hàng nhập về
+			}
+			<form method="POST">
+				<label for="fname">Nhập Mã mặt hàng:</label><br>
+				<input type="text" id="fname" name="maMH" value="@maMH"><br>
+
+				<label for="fname">Nhập Tên mặt hàng:</label><br>
+				<select name="ten" asp-for="SelectedValue">
+					@foreach (var item in a)
+					{
+						<option value="@item">@item</option>
+					}
+				</select><br>
+
+				<label for="fname">Nhập Loại hàng:</label><br>
+				<input type="text" id="fname" name="loai" value="@loai"><br>
+
+				<label for="fname">Nhập Tên công ty sản xuất:</label><br>
+				<input type="text" id="fname" name="congty" value="@congTy"><br>
+
+				<label for="fname">Nhập ngày sản xuất:</label><br>
+				<input type="date" id="fname" name="nsx" value="@nsx"><br>
+
+				<label for="fname">Nhập hạn sử dụng:</label><br>
+				<input type="date" id="fname" name="hsd" value="@hsd"><br>
+
+				<label for="fname">Nhập Giá mặt hàng:</label><br>
+				<input type="text" id="fname" name="gia" value="@gia"><br><br>
+
+				<input type="submit" value="Thêm" />
+			</form>
+		</div>
+		<p>@tb</p>
+	}	
+}

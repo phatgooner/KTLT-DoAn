@@ -1,0 +1,83 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_QuanLyHoaDonNhapHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		XuLyHoaDonNhapHang.CapNhatHoaDon();
+		HoaDon[] ds;
+		string tuKhoa = string.Empty;
+
+		if (Request.Method == "POST")
+		{
+			tuKhoa = Request.Form["tukhoa"]!;
+			ds = XuLyHoaDonNhapHang.DocDanhSach(tuKhoa);
+		}
+
+		else
+		{
+			ds = XuLyHoaDonNhapHang.DocDanhSach();
+		}
+
+
+		<p style=" text-align:center; font-size:larger; font-weight: bold">DANH SÁCH HÓA ĐƠN NHẬP HÀNG</p>
+
+		<div>
+			<form method="POST">
+				<label for="fname">Tìm mã hóa đơn:</label><br>
+				<input type="text" id="fname" name="tukhoa" value="@tuKhoa">
+
+
+				<input type="submit" value="Tìm kiếm" />
+			</form>
+		</div>
+		<br>
+
+
+		@if (ds != null)
+		{
+			<div>
+				<table>
+					<tr>
+						<th>STT</th>
+						<th>Mã Hóa Đơn</th>
+						<th>Tên Người/Đơn vị bán hàng</th>
+						<th>Ngày Tạo Hóa Đơn</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+					@for (int i = 0; i < ds.Length; i++)
+					{
+						<tr>
+							<td>@(i + 1)</td>
+							<td>@ds[i].Ma</td>
+							<td>@ds[i].TenNguoi</td>
+							<td>@ds[i].NgayTao</td>
+							<td>
+								<a href="/MH_XemChiTietHoaDonNhapHang?maHD=@ds[i].Ma">Xem chi tiết</a>
+							</td>
+							<td>
+								<a href="/MH_SuaHoaDonNhapHang?maHD=@ds[i].Ma">Sửa thông tin</a>
+							</td>
+							<td>
+								<a href="/MH_XoaHoaDonNhapHang?maHD=@ds[i].Ma">Xóa</a>
+							</td>
+						</tr>
+					}
+				</table>
+			</div>
+		}
+		<div>
+			<a href="/MH_ThemHoaDonNhapHang">Tạo Hóa Đơn Mới</a>
+		</div>
+	}
+}

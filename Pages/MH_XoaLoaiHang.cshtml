@@ -1,0 +1,60 @@
+﻿@page
+@using DoAnMonHoc_23880108.Entity;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.LuuTru;
+
+@model DoAnMonHoc_23880108.Pages.MH_XoaLoaiHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		string tb = "";
+		string tenLH = Request.Query["tenLH"]!;
+
+		if (string.IsNullOrEmpty(Request.Query["tenLH"]))
+		{
+			tb = "Loại hàng không hợp lệ! ";
+		}
+
+		if (tb == string.Empty)
+		{
+			if (Request.Method == "GET")
+			{
+				LoaiHang? lh = XuLyLoaiHang.DocLoaiHang(tenLH);
+				if (lh.HasValue)
+				{
+					tb = $"Bạn có chắc muốn xóa loại hàng {lh.Value.Ten}? Những mặt hàng thuộc loại hàng này sẽ bị mất nếu xóa! ";
+				}
+				else
+				{
+					tb = "Không tìm thấy loại hàng! ";
+				}
+			}
+			else if (Request.Method == "POST")
+			{
+				XuLyLoaiHang.XoaLoaiHang(tenLH);
+				Response.Redirect("/MH_QuanLyLoaiHang");
+			}
+		}
+		@if (XuLyLoaiHang.DocLoaiHang(tenLH).HasValue)
+		{
+			<p>Xóa loại hàng @tenLH</p>
+
+			<p>@tb</p>
+			<div>
+				<form method="POST">
+					<input type="submit" value="Xóa" />
+				</form>
+			</div>
+		}
+		else
+		{
+			<p>@tb</p>
+		}
+	}
+}

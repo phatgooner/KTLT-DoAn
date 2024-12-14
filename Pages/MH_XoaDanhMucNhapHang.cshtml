@@ -1,0 +1,20 @@
+﻿@page
+@using DoAnMonHoc_23880108.LuuTru;
+@using DoAnMonHoc_23880108.NghiepVu;
+@using DoAnMonHoc_23880108.Entity;
+
+@model DoAnMonHoc_23880108.Pages.MH_XoaDanhMucNhapHangModel
+@{
+	string username = HttpContext.Session.GetString("username")!;
+	if (string.IsNullOrEmpty(username))
+	{
+		Response.Redirect("/MH_TrangChu");
+	}
+	else
+	{
+		string maHoaDon = Request.Query["maHD"]!;
+		string tenHang = Request.Query["tenHang"]!;
+		XuLyDanhMucNhapHang.XoaDanhMucTheoTenMatHang(maHoaDon, tenHang);
+		Response.Redirect($"/MH_ThemDanhMucNhapHang?maHD={maHoaDon}");
+	}
+}

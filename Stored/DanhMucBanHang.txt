@@ -1,0 +1,7 @@
+6
+HD01,Laptop MSI,Cái,1,35000000
+HD02,iPhone 15 Pro Max,Cái,1,34000000
+HD02,Laptop MSI,Cái,1,20000000
+HD03,Bánh Trung Thu,Hộp,5,300000
+HD04,iPhone 15 Pro Max,Cái,1,35000000
+HD04,Tai nghe AirPods,Cái,1,5000000
